@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:tizen="http://tizen.org/ns/widgets"
+        id="http://github.com/kamilian2/tv_nakladka_tizen"
+        version="1.0.0"
+        viewmodes="maximized">
+    <tizen:application id="TvNakladka.app" package="TvNakladka" required_version="2.3"/>
+    <content src="index.html"/>
+    <icon src="icon.png"/>
+    <name>TvNakladka</name>
+    <description>Zegar, encje z Home Assistanta i kamery na tle telewizji lub HDMI.</description>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+
+    <!-- dostęp do sieci (Home Assistant, kamery) -->
+    <access origin="*" subdomains="true"/>
+    <tizen:allow-navigation>*</tizen:allow-navigation>
+    <tizen:content-security-policy>default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src * data: blob:; media-src * blob:; connect-src *</tizen:content-security-policy>
+
+    <!-- uprawnienia (wszystkie poziomu "public") -->
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.window"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.channel"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
+
+    <tizen:profile name="tv-samsung"/>
+    <tizen:setting screen-orientation="landscape" context-menu="disable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+</widget>

@@ -1,0 +1,100 @@
+/* Ekran 1920 × 1080. Tło przezroczyste – pod stroną jest obraz TV/HDMI. */
+@font-face { font-family: "DSEG7"; src: url("../fonts/dseg7.ttf") format("truetype"); }
+@font-face { font-family: "DSEG14"; src: url("../fonts/dseg14.ttf") format("truetype"); }
+
+html, body {
+  margin: 0; padding: 0; width: 1920px; height: 1080px; overflow: hidden;
+  background: transparent; color: #fff;
+  font-family: "SamsungOne", "Tizen", "Roboto", sans-serif;
+}
+.hidden { display: none !important; }
+
+/* ---------- zegar i pola ---------- */
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.pill {
+  position: absolute; left: 0; top: 0;
+  display: flex; align-items: center; white-space: nowrap;
+  overflow: hidden; box-sizing: border-box;
+  transition-property: opacity, transform; transition-timing-function: ease-in-out;
+  transform-origin: 50% 50%;
+}
+.pill .inner {
+  display: flex; align-items: center;
+  transition-property: opacity, transform; transition-timing-function: ease-in-out;
+}
+.pill .icon { line-height: 1; }
+.pill .text { line-height: 1.05; font-variant-numeric: tabular-nums; }
+.pill.shadow .text, .pill.shadow .icon { text-shadow: 0 2px 6px rgba(0,0,0,.75); }
+.pill.edit { outline: 2px dashed rgba(255,255,255,.35); }
+
+/* style tła */
+.pill.glass, .pill.glass_dark {
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+}
+
+/* ---------- kamery ---------- */
+#cameras {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; padding: 0 48px;
+}
+#cameras .cam {
+  position: relative; background: #000; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,.6);
+}
+#cameras .cam img, #cameras .cam video { width: 100%; height: 100%; object-fit: cover; display: block; }
+#cameras .cam .msg {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 20px; font-size: 26px; color: #ffd54f;
+}
+
+/* ---------- komunikaty ---------- */
+#toasts { position: absolute; left: 48px; top: 48px; display: flex; flex-direction: column; gap: 12px; }
+.toast {
+  background: rgba(16,24,32,.88); border-radius: 18px; padding: 20px 30px;
+  font-size: 34px; display: flex; align-items: center; gap: 18px; max-width: 1000px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.5);
+}
+.toast .mdi { font-size: 52px; }
+.toast small { display: block; font-size: 26px; opacity: .85; margin-top: 4px; }
+
+/* ---------- menu ustawień (pilot) ---------- */
+#menu {
+  position: absolute; left: 0; top: 0; width: 1380px; height: 1080px;
+  display: flex; background: rgba(8,20,32,.96); color: #fff; z-index: 10;
+}
+#menu-left { width: 400px; background: #0f2a3f; padding: 40px 24px; box-sizing: border-box; overflow: hidden; }
+.menu-title { font-size: 44px; font-weight: 700; margin: 0 0 28px 10px; }
+.section {
+  font-size: 32px; padding: 16px 22px; margin-bottom: 8px; border-radius: 14px; background: #24435c;
+  border: 3px solid transparent;
+}
+.section.active { color: #ffd54f; border-color: #ffd54f; background: #1e4e70; }
+.section.focus { background: #4dd8ff; color: #04212e; border-color: #fff; }
+
+#menu-right { flex: 1; padding: 36px 48px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; }
+#section-title { font-size: 48px; font-weight: 700; }
+#section-info { font-size: 26px; color: #c8e6fa; margin: 8px 0 18px; line-height: 1.35; }
+#rows { flex: 1; overflow: hidden; position: relative; }
+.row {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 32px; padding: 16px 22px; margin-bottom: 8px; border-radius: 14px;
+  background: rgba(255,255,255,.05); border: 3px solid transparent;
+}
+.row .val { color: #ffd54f; font-weight: 700; margin-left: 24px; text-align: right; max-width: 560px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .arrows { color: #8fb0c8; margin-left: 14px; }
+.row.focus { background: #4dd8ff; color: #04212e; border-color: #fff; }
+.row.focus .val { color: #04212e; }
+.row.focus .arrows { color: #04212e; }
+.row.action .val { color: #4dd8ff; }
+.row.note { background: none; font-size: 26px; color: #c8e6fa; padding: 8px 22px; }
+
+#hint {
+  position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%);
+  background: rgba(0,0,0,.7); padding: 14px 28px; border-radius: 14px; font-size: 28px;
+}
+#textinput { position: absolute; left: -2000px; top: 0; width: 900px; font-size: 32px; }
+#textinput.show {
+  left: 460px; top: 480px; z-index: 20; padding: 18px; border-radius: 12px; border: 3px solid #4dd8ff;
+  background: #0d1d2c; color: #fff;
+}

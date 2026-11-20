@@ -1,0 +1,18 @@
+{
+  "ha": {
+    "url": "",
+    "token": "",
+    "interval": 5
+  },
+  "source": {
+    "type": "TV",
+    "number": 1
+  },
+  "e1": {
+    "entity": ""
+  },
+  "cams": {
+    "c1_name": "Kamera 1",
+    "c1_url": ""
+  }
+}
